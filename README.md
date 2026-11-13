@@ -7,11 +7,27 @@ The skill includes a self-contained HTML starter, a Node.js generator, and guide
 ## Requirements
 
 - Codex with support for local skills.
-- Node.js **18.3 or newer** to use the included generator. No npm packages are required.
+- Node.js **22.20 or newer** to install with the `skills` CLI. The standalone generator itself requires Node.js **18.3 or newer** and no npm packages.
 - A modern browser to view the generated HTML.
-- Git and access to this private repository to clone it.
+- Git if installing by cloning the repository.
 
-## Install for Codex
+## Install with `npx skills`
+
+Install interactively and choose the skill and coding agent:
+
+```sh
+npx skills add deserveto/ascii-motion
+```
+
+To install `ascii-motion` for Codex across your projects:
+
+```sh
+npx skills add deserveto/ascii-motion --skill ascii-motion --agent codex --global
+```
+
+Omit `--global` to install for the current project. To see the skills available in this repository without installing them, run `npx skills add deserveto/ascii-motion --list`. If a copy is already installed, review the installer's prompts before replacing it. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
+
+## Install manually for Codex
 
 Clone the repository into your personal Codex skills directory. The repository root is the skill directory, so `SKILL.md` must end up directly inside `ascii-motion`.
 
@@ -29,7 +45,7 @@ New-Item -ItemType Directory -Force "$HOME\.codex\skills" | Out-Null
 git clone https://github.com/deserveto/ascii-motion.git "$HOME\.codex\skills\ascii-motion"
 ```
 
-If that destination already exists, keep a backup and update or replace it deliberately; Git will not clone into a nonempty directory. Restart Codex or start a new session if the skill does not appear immediately. Authentication must have access to this private repository.
+If that destination already exists, keep a backup and update or replace it deliberately; Git will not clone into a nonempty directory. Restart Codex or start a new session if the skill does not appear immediately.
 
 ## Use with Codex
 
@@ -105,7 +121,7 @@ examples/flower.txt         Small sample input
 ## Troubleshooting
 
 - **Skill not found:** Check that `~/.codex/skills/ascii-motion/SKILL.md` exists, then start a new Codex session.
-- **`node` not found or too old:** Install Node.js 18.3 or newer and reopen the terminal.
+- **`node` not found or too old:** Install Node.js 22.20 or newer for `npx skills`, or 18.3 or newer for the standalone generator, and reopen the terminal.
 - **Output already exists:** Choose a new filename or use `--force` to replace it.
 - **Image fails to load:** Check the source file and browser support for its format; regenerate after correcting the source.
 - **Animation does not move:** Check your operating system or browser reduced-motion setting; the starter intentionally shows a resting pose when reduced motion is enabled.
@@ -113,4 +129,4 @@ examples/flower.txt         Small sample input
 
 ## Updating the skill
 
-If installed as a Git clone, run `git -C ~/.codex/skills/ascii-motion pull` to update it. Review or commit local changes first. On Windows PowerShell, use `git -C "$HOME\.codex\skills\ascii-motion" pull`.
+If installed with `npx skills`, use `npx skills check` and `npx skills update` to check for and apply updates. If installed as a Git clone, run `git -C ~/.codex/skills/ascii-motion pull` to update it. Review or commit local changes first. On Windows PowerShell, use `git -C "$HOME\.codex\skills\ascii-motion" pull`.
