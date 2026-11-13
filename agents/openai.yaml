@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASCII Motion"
+  short_description: "Create fluid fixed-grid ASCII animations"
+  default_prompt: "Use $ascii-motion to turn this image or ASCII artwork into a smooth animated scene."
